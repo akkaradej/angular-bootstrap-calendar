@@ -267,6 +267,13 @@
   -webkit-box-sizing: border-box;
   border-bottom: thin dashed #e1e1e1;
 }
+.cal-day-box .cal-day-hour-part .day-hour-split {
+  cursor: pointer;
+  height: 100%;
+}
+.cal-day-box .cal-day-hour-part .day-hour-split:hover {
+  background-color: #E5E5E5;
+}
 .cal-day-box .cal-day-hour .day-highlight {
   height: 30px;
 }

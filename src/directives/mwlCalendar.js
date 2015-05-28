@@ -20,6 +20,7 @@ angular
         onDeleteEventClick: '&',
         onTimespanClick: '&',
         onDrillDownClick: '&',
+        onDayHourSplitClick: '&',
         dayViewStart: '@',
         dayViewEnd: '@',
         dayViewSplit: '@'

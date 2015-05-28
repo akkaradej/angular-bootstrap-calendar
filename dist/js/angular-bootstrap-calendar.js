@@ -613,6 +613,7 @@
                 events: '=',
                 currentDay: '=',
                 onEventClick: '=',
+                onDayHourSplitClick: '=',
                 dayViewStart: '=',
                 dayViewEnd: '=',
                 dayViewSplit: '='
@@ -627,6 +628,7 @@
                     var vm = this;
                     var dayViewStart, dayViewEnd;
                     vm.calendarConfig = calendarConfig;
+                    vm.range = range;
                     function updateDays() {
                         dayViewStart = moment($scope.dayViewStart || '00:00', 'HH:mm');
                         dayViewEnd = moment($scope.dayViewEnd || '23:00', 'HH:mm');
@@ -635,9 +637,18 @@
                         vm.hours = [];
                         var dayCounter = moment(dayViewStart);
                         for (var i = 0; i <= dayViewEnd.diff(dayViewStart, 'hours'); i++) {
-                            vm.hours.push({ label: dayCounter.format(calendarConfig.dateFormats.hour) });
+                            vm.hours.push({
+                                time: moment(dayCounter),
+                                label: dayCounter.format(calendarConfig.dateFormats.hour)
+                            });
                             dayCounter.add(1, 'hour');
                         }
+                    }
+                    function range(time, splitTimeAt) {
+                        return {
+                            startsAt: moment(time).add(splitTimeAt * vm.dayViewSplit, 'minute'),
+                            endsAt: moment(time).add(splitTimeAt * vm.dayViewSplit + vm.dayViewSplit, 'minute')
+                        };
                     }
                     var originalLocale = moment.locale();
                     $scope.$on('calendar.refreshView', function () {
@@ -671,6 +682,7 @@
                 onDeleteEventClick: '&',
                 onTimespanClick: '&',
                 onDrillDownClick: '&',
+                onDayHourSplitClick: '&',
                 dayViewStart: '@',
                 dayViewEnd: '@',
                 dayViewSplit: '@'

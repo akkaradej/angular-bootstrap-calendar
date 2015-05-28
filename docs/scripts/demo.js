@@ -69,6 +69,10 @@ angular
       showModal('Deleted', event);
     };
 
+    $scope.dayHourSplitClicked = function(range){
+      showModal('Day Hour Split Clicked', range);
+    }
+
     $scope.toggle = function($event, field, event) {
       $event.preventDefault();
       $event.stopPropagation();
