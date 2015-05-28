@@ -649,6 +649,10 @@
                         vm.hourHeight = 60 / $scope.dayViewSplit * 30;
                         vm.hours = [];
                         var dayCounter = moment(dayViewStart);
+                        var currentDay = moment($scope.currentDay);
+                        dayCounter.date(currentDay.date());
+                        dayCounter.month(currentDay.month());
+                        dayCounter.year(currentDay.year());
                         for (var i = 0; i <= dayViewEnd.diff(dayViewStart, 'hours'); i++) {
                             vm.hours.push({
                                 time: moment(dayCounter),
