@@ -187,7 +187,7 @@
             }
             function getDayView(events, currentDay, dayStartHour, dayEndHour, hourHeight) {
                 var calendarStart = moment(currentDay).startOf('day').add(dayStartHour, 'hours');
-                var calendarEnd = moment(currentDay).startOf('day').add(dayEndHour, 'hours');
+                var calendarEnd = moment(currentDay).startOf('day').add(dayEndHour + 1, 'hours');
                 var calendarHeight = (dayEndHour - dayStartHour + 1) * hourHeight;
                 var hourHeightMultiplier = hourHeight / 60;
                 var buckets = [];
