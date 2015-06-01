@@ -47,10 +47,11 @@
       class="pull-left day-event day-highlight"
       ng-class="'dh-event-' + event.type"
       ng-repeat="event in vm.view track by $index"
-      ng-style="{top: event.top + 'px', left: event.left + 60 + 'px', height: event.height + 'px'}">
+      ng-style="{top: event.top + 'px', left: event.left + 60 + 'px', height: event.height + 'px'}"
+      ng-click="onEventClick({calendarEvent: event})">
 
       <!--<span class="cal-hours">{{ event.startsAt | date:'d MMM HH:mm' }} - {{ event.endsAt | date:'d MMM HH:mm' }}<br></span>-->
-      <a href="javascript:;" class="event-item" ng-click="onEventClick({calendarEvent: event})">
+      <a href="javascript:;" class="event-item">
         <span ng-bind="event.title | calendarTruncateEventTitle:20:event.height"></span>
       </a>
 
